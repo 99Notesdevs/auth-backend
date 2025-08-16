@@ -1,4 +1,4 @@
-import { IUser } from "../../../dash-backend/src/interface/user.interface";
+import { IUser } from "../interface/user.interface";
 import { prisma } from "../config/prisma";
 import logger from "../utils/logger";
 
