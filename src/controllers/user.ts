@@ -84,7 +84,7 @@ export class User {
   static async userDetails(req: Request, res: Response) {
     try {
       logger.info("Fetching user details");
-      const id = req.body.authUser;
+      const id = req.authUser;
       const user = await UserService.getUserDetails(Number(id));
       if (!user) throw new Error("User not found");
       logger.info("User details fetched successfully");
@@ -210,7 +210,7 @@ export class User {
       logger.info("Logging out user");
       const body = req.body;
       const data = {
-        token: body.authUser || "",
+        token: req.authUser || "",
       };
       const user = await UserService.logoutUser(data);
       if (!user) throw new Error("Cannot logout");
@@ -239,10 +239,10 @@ export class User {
     try {
       logger.info("Updating user details");
       const body = req.body;
-      if (!body.password || !body.authUser)
+      if (!body.password || !req.authUser)
         throw new Error("Invalid body on userUpdate");
       const data = {
-        id: body.authUser || body.authUser.id,
+        id: parseInt(req.authUser),
         password: body.password,
       };
       logger.info("User update data prepared");
@@ -272,9 +272,9 @@ export class User {
     try {
       logger.info("Deleting user");
       const body = req.body;
-      if (!body.authUser) throw new Error("Invalid body on deleteUser");
+      if (!req.authUser) throw new Error("Invalid body on deleteUser");
       const data = {
-        id: body.authUser || body.authUser.id,
+        id: parseInt(req.authUser),
       };
       logger.info("User delete data prepared");
       const user = await UserService.deleteUser(data);
@@ -300,7 +300,7 @@ export class User {
   static async validate(req: Request, res: Response) {
     logger.info("Validating user token");
     try {
-      const id = req.body.authUser;
+      const id = req.authUser;
       if (!id) throw new Error("Token not found");
       logger.info("Token verified successfully");
       const user = await UserService.validateUser(Number(id));
@@ -327,7 +327,7 @@ export class User {
     logger.info("Updating user data");
     try {
       const body = req.body;
-      const id = req.body.authUser;
+      const id = req.authUser;
       if (!id) throw new Error("Token not found");
       const data: {
         paidUser?: boolean;

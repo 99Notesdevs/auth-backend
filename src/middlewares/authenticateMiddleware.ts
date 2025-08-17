@@ -4,6 +4,15 @@ import { AuthTokenRepository } from '../repositories/AuthTokenRepository';
 import dotenv from 'dotenv';
 import logger from '../utils/logger';
 
+declare global {
+    namespace Express {
+        interface Request {
+            authUser?: string;
+            authType?: string;
+        }
+    }
+}
+
 dotenv.config();
 const secret = process.env.TOKEN_SECRET || '';
 
@@ -23,8 +32,8 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
         if(!id) throw new Error('Cannot verify token');
         logger.info("Identity verified successfully");
         
-        req.body.authUser = id;
-        req.body.authType = type;
+        req.authUser = id;
+        req.authType = type;
         
         next();
     } catch(err: unknown) {
