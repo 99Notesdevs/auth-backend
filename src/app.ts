@@ -11,6 +11,7 @@ app.use(
       "http://main.main.local:3000",
       "http://tests.main.local:5173",
       "http://shop.main.local:5173",
+      "http://auth.main.local:5174",
       "http://localhost:44275",
       "http://13.126.229.93:5173",
       "http://13.126.229.93",
