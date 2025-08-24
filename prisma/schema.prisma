@@ -556,6 +556,7 @@ model ProductRating {
   userId      Int      
   productId   Int
   rating      Int
+  review      String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
