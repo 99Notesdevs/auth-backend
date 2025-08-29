@@ -15,6 +15,7 @@ app.use(
       "http://localhost:44275",
       "http://13.126.229.93:5173",
       "http://13.126.229.93",
+      "http://community.main.local:8080"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
