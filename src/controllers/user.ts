@@ -209,8 +209,9 @@ export class User {
     try {
       logger.info("Logging out user");
       const body = req.body;
+      
       const data = {
-        token: req.authUser || "",
+        token: req.cookies['token'] || "",
       };
       const user = await UserService.logoutUser(data);
       if (!user) throw new Error("Cannot logout");
