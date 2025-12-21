@@ -1,8 +1,9 @@
-import { app } from "./app";
 import dotenv from "dotenv";
+dotenv.config();
+
+import { app } from "./app";
 import logger from "./utils/logger";
 import { startUserGrpcServer } from "./grpc/server/server";
-dotenv.config();
 
 const PORT = Number(process.env.PORT) || 55000;
 
