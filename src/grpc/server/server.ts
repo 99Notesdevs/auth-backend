@@ -48,6 +48,18 @@ server.addService(userProto.UserService.service, {
       });
     }
   },
+  GetUsersDetails: async (call: any, callback: any) => {
+    try {
+      const { ids } = call.request;
+      const users = await UserRepository.getUsers(ids);
+      callback(null, { users });
+    } catch(err: any) {
+      callback({
+        code: grpc.status.NOT_FOUND,
+        message: err.message || "Not found users details"
+      })
+    }
+  }
 });
 
 export const startUserGrpcServer = () => {

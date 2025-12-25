@@ -1,6 +1,7 @@
 import { IUser } from "../interface/user.interface";
 import { prisma } from "../config/prisma";
 import logger from "../utils/logger";
+import { includes } from "zod";
 
 export class UserRepository {
   static async isUserById(id: number) {
@@ -13,6 +14,31 @@ export class UserRepository {
 
     logger.info("Exiting isUserById repository method");
     return user;
+  }
+
+  static async getUsers(ids: number[]) {
+    const users = await prisma.user.findMany({
+      where: {
+        id: { in: ids },
+      },
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        userData: {
+          select: {
+            rating: true,
+          },
+        },
+      },
+    });
+
+    return users.map((u) => ({
+      userId: u.id,
+      firstName: u.firstName,
+      lastName: u.lastName,
+      rating: u.userData?.rating ?? 0,
+    }));
   }
 
   static async createUser({
