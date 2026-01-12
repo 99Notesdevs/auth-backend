@@ -60,7 +60,8 @@ export class User {
 
       res.cookie("token", token, {
         domain: `${domain}`, // critical: enables subdomain sharing
-        httpOnly: production,
+	// path: "/",
+        httpOnly: !production,
         secure: production, // for HTTP in local dev
         sameSite: "lax",
       });
@@ -149,7 +150,8 @@ export class User {
       logger.info("User registered successfully");
       res.cookie("token", user, {
         domain: `${domain}`, // critical: enables subdomain sharing
-        httpOnly: production,
+	// path: "/",
+        httpOnly: !production,
         secure: production, // for HTTP in local dev
         sameSite: "lax",
       });
@@ -187,7 +189,8 @@ export class User {
       logger.info("User logged in successfully");
       res.cookie("token", user, {
         domain: domain, // critical: enables subdomain sharing
-        httpOnly: production,
+	// path: "/",
+        httpOnly: !production,
         secure: production, // for HTTP in local dev
         sameSite: "lax",
       });
@@ -218,7 +221,8 @@ export class User {
       logger.info("User logged out successfully");
       res.clearCookie("token", {
         domain: domain, // critical: enables subdomain sharing
-        httpOnly: production,
+	// path: "/",
+        httpOnly: !production,
         secure: production, // for HTTP in local dev
         sameSite: "lax",
       });

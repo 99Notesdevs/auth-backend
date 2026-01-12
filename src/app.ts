@@ -8,14 +8,12 @@ export const app = express();
 app.use(
   cors({
     origin: [
-      "http://main.main.local:3000",
-      "http://tests.main.local:5173",
-      "http://shop.main.local:5173",
-      "http://auth.main.local:5174",
-      "http://localhost:44275",
-      "http://13.126.229.93:5173",
-      "http://13.126.229.93",
-      "http://community.main.local:8080"
+      "http://74.225.194.245:3000",
+      "http://74.225.194.245:5173",
+      "http://74.225.194.245:5174",
+      "http://74.225.194.245",
+      "http://20.40.45.204",
+      "https://99notes.org"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
