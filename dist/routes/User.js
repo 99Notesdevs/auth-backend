@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const user_1 = require("../controllers/user");
+const authenticateMiddleware_1 = require("../middlewares/authenticateMiddleware");
+const authorizeRoles_1 = require("../middlewares/authorizeRoles");
+const userRouter = (0, express_1.Router)();
+userRouter.get('/', authenticateMiddleware_1.authenticate, (0, authorizeRoles_1.authorizeRoles)(["User"]), user_1.User.userDetails);
+userRouter.get('/check', authenticateMiddleware_1.authenticate, (0, authorizeRoles_1.authorizeRoles)(["User"]), user_1.User.check); //simple user check for auth token
+userRouter.get('/validate', authenticateMiddleware_1.authenticate, (0, authorizeRoles_1.authorizeRoles)(["User"]), user_1.User.validate);
+userRouter.get('/:id', authenticateMiddleware_1.authenticate, (0, authorizeRoles_1.authorizeRoles)(["Admin"]), user_1.User.adminUserDetails);
+userRouter.post('/signup', user_1.User.register);
+userRouter.post('/', user_1.User.login);
+userRouter.post('/google', user_1.User.googleOneTapLogin);
+userRouter.post('/logout', authenticateMiddleware_1.authenticate, (0, authorizeRoles_1.authorizeRoles)(["User"]), user_1.User.logout);
+userRouter.put('/updateUser/:id', authenticateMiddleware_1.authenticate, (0, authorizeRoles_1.authorizeRoles)(["Admin"]), user_1.User.adminUpdateUser);
+userRouter.put('/userdata', authenticateMiddleware_1.authenticate, (0, authorizeRoles_1.authorizeRoles)(["User"]), user_1.User.updateUserData);
+userRouter.put('/:id', authenticateMiddleware_1.authenticate, (0, authorizeRoles_1.authorizeRoles)(["User"]), user_1.User.userUpdate);
+// userRouter.delete('/:id', authenticate, authorizeRoles(["User"]), User.deleteUser);
+exports.default = userRouter;
