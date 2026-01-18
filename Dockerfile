@@ -23,6 +23,6 @@ COPY . .
 # Rebuild native modules
 RUN npm rebuild || true
 
-EXPOSE 5000
+EXPOSE 55000
 
 CMD ["npm", "run", "start"]
