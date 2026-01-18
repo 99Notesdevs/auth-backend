@@ -17,6 +17,9 @@ RUN npx prisma generate || true
 # Copy pre-compiled dist folder
 COPY dist ./dist
 
+# Copy proto files to dist (where the app expects them)
+COPY src/grpc/proto ./dist/grpc/proto
+
 # Copy everything else
 COPY . .
 
