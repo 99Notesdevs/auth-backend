@@ -68,7 +68,8 @@ class User {
                 logger_1.default.info("User logged in successfully via Google One Tap");
                 res.cookie("token", token, {
                     domain: `${domain}`, // critical: enables subdomain sharing
-                    httpOnly: production,
+                    // path: "/",
+                    httpOnly: !production,
                     secure: production, // for HTTP in local dev
                     sameSite: "lax",
                 });
@@ -170,7 +171,8 @@ class User {
                 logger_1.default.info("User registered successfully");
                 res.cookie("token", user, {
                     domain: `${domain}`, // critical: enables subdomain sharing
-                    httpOnly: production,
+                    // path: "/",
+                    httpOnly: !production,
                     secure: production, // for HTTP in local dev
                     sameSite: "lax",
                 });
@@ -213,7 +215,8 @@ class User {
                 logger_1.default.info("User logged in successfully");
                 res.cookie("token", user, {
                     domain: domain, // critical: enables subdomain sharing
-                    httpOnly: production,
+                    // path: "/",
+                    httpOnly: !production,
                     secure: production, // for HTTP in local dev
                     sameSite: "lax",
                 });
@@ -247,7 +250,8 @@ class User {
                 logger_1.default.info("User logged out successfully");
                 res.clearCookie("token", {
                     domain: domain, // critical: enables subdomain sharing
-                    httpOnly: production,
+                    // path: "/",
+                    httpOnly: !production,
                     secure: production, // for HTTP in local dev
                     sameSite: "lax",
                 });
