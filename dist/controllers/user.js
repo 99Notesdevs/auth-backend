@@ -71,7 +71,7 @@ class User {
                     // path: "/",
                     httpOnly: !production,
                     secure: production, // for HTTP in local dev
-                    sameSite: "lax",
+                    sameSite: "none",
                 });
                 res.status(200).json({ success: true });
             }
@@ -174,7 +174,7 @@ class User {
                     // path: "/",
                     httpOnly: !production,
                     secure: production, // for HTTP in local dev
-                    sameSite: "lax",
+                    sameSite: "none",
                 });
                 res.status(200).json({ success: true });
             }
@@ -218,7 +218,7 @@ class User {
                     // path: "/",
                     httpOnly: !production,
                     secure: production, // for HTTP in local dev
-                    sameSite: "lax",
+                    sameSite: "none",
                 });
                 res.status(200).json({ success: true });
             }
@@ -253,7 +253,7 @@ class User {
                     // path: "/",
                     httpOnly: !production,
                     secure: production, // for HTTP in local dev
-                    sameSite: "lax",
+                    sameSite: "none",
                 });
                 res.status(200).json({ success: true });
             }

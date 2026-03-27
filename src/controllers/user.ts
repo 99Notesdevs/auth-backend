@@ -63,7 +63,7 @@ export class User {
 	// path: "/",
         httpOnly: !production,
         secure: production, // for HTTP in local dev
-        sameSite: "lax",
+        sameSite: "none",
       });
       res.status(200).json({ success: true });
     } catch (error: unknown) {
@@ -153,7 +153,7 @@ export class User {
 	// path: "/",
         httpOnly: !production,
         secure: production, // for HTTP in local dev
-        sameSite: "lax",
+        sameSite: "none",
       });
       res.status(200).json({ success: true });
     } catch (error: unknown) {
@@ -192,7 +192,7 @@ export class User {
 	// path: "/",
         httpOnly: !production,
         secure: production, // for HTTP in local dev
-        sameSite: "lax",
+        sameSite: "none",
       });
       res.status(200).json({ success: true });
     } catch (error: unknown) {
@@ -224,7 +224,7 @@ export class User {
 	// path: "/",
         httpOnly: !production,
         secure: production, // for HTTP in local dev
-        sameSite: "lax",
+        sameSite: "none",
       });
       res.status(200).json({ success: true });
     } catch (error: unknown) {

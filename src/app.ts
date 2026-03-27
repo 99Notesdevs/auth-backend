@@ -10,6 +10,7 @@ app.use(
     origin: [
       "https://99notes.org",
       "http://99notes.org",
+      "https://test.99notes.org",
       "http://localhost",
       "http://localhost:3000",
       "http://localhost:3001",
