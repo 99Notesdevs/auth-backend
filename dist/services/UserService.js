@@ -142,5 +142,5 @@ UserService.googlAuthLogin = (_b) => __awaiter(void 0, [_b], void 0, function* (
     const authtoken = cookie.split(" ")[1];
     yield AuthTokenRepository_1.AuthTokenRepository.createAuthToken(authtoken, "User");
     logger_1.default.info("Exiting googlAuthLogin service");
-    return cookie;
+    return authtoken;
 });
