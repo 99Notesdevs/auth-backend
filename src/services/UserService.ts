@@ -45,7 +45,7 @@ export class UserService {
     const authtoken = cookie.split(" ")[1];
     await AuthTokenRepository.createAuthToken(authtoken, "User");
     logger.info("Exiting googlAuthLogin service");
-    return cookie;
+    return authtoken;
   };
 
   static async registerUser({
